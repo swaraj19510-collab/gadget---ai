@@ -1,0 +1,76 @@
+# app.py
+import streamlit as st
+
+st.set_page_config(page_title="Virtual Gadget Designer", layout="wide")
+
+st.title("🚀 Virtual Gadget Designer")
+st.write("Yaha aap gadget ka idea dalenge aur AI virtual options + 3D images dekhega!")
+
+# Step 1: User Idea Input
+user_idea = st.text_input("Enter your gadget idea:", "A machine that cuts grass fast")
+
+if user_idea:
+    st.markdown(f"### You entered: {user_idea}")
+
+    # Step 2: Gadget Options
+    st.subheader("💡 Gadget Options")
+    options = {
+        "Option A – Electric Rotary Cutter": {
+            "Motor": "200W DC",
+            "Energy": "Wired Electric",
+            "Best for": "Small lawns"
+        },
+        "Option B – Battery Trimmer": {
+            "Motor": "50W DC",
+            "Energy": "Battery",
+            "Best for": "Portable use"
+        },
+        "Option C – Robotic Mower": {
+            "Motor": "60W DC",
+            "Energy": "Battery + Solar",
+            "Best for": "Automatic mowing"
+        }
+    }
+
+    for name, details in options.items():
+        with st.expander(name):
+            for k, v in details.items():
+                st.write(f"**{k}:** {v}")
+
+    # Step 3: Equipment List
+    st.subheader("🛠️ Equipment List (common)")
+    equipment = ["Motor", "Blade", "Control Unit", "Battery/Solar", "Frame", "Wheels"]
+    st.write(", ".join(equipment))
+
+    # Step 4: Energy Comparison
+    st.subheader("⚡ Energy Runtime Comparison")
+    energy = {
+        "Battery": "45 min",
+        "Solar": "2.5 hr",
+        "Electric": "Unlimited"
+    }
+    st.table(energy)
+
+    # Step 5: Cost Estimate
+    st.subheader("💰 Estimated Cost")
+    cost = {
+        "Motor": "₹1200",
+        "Battery": "₹1600",
+        "Blade": "₹300",
+        "Frame": "₹800",
+        "Total": "₹3900"
+    }
+    st.table(cost)
+
+    # Step 6: Working Explanation
+    st.subheader("📘 Working Principle")
+    st.write("""
+Motor spins the blade → blade cuts grass → frame protects blade → wheels move the machine.
+This is a **virtual simulation**, no real machine is built.
+""")
+
+    # Step 7: 3D Gadget Placeholder
+    st.subheader("🖼️ 3D Gadget Preview (Virtual)")
+    st.image("https://via.placeholder.com/400x300.png?text=3D+Gadget+Preview", caption="Virtual 3D Gadget")
+
+    st.success("✅ All info displayed virtually. No real machine needed.")
